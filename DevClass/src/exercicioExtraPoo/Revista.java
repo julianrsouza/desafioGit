@@ -9,9 +9,9 @@ public class Revista extends Produto{
 	private List<Artigo> artigos = new ArrayList<>();
 	
 	
-	public Revista(String dataPub, Float precoVenda, String editora, Integer numEdicao,
-			List<Artigo> artigos) {
-		super(dataPub, precoVenda);
+	public Revista(String dataPub, Double precoVenda, String editora, Integer numEdicao,
+			List<Artigo> artigos, Integer quantidade) {
+		super(dataPub, precoVenda, quantidade);
 		this.editora = editora;
 		this.numEdicao = numEdicao;
 		this.artigos = artigos;
@@ -59,8 +59,8 @@ public class Revista extends Produto{
 	
 	public String toStringResumido() {
 		return "Código do produto: " + this.getCodigo()
-				+ "Revista"
-				+ "Editora: " + this.editora;
+				+ "\nRevista"
+				+ "\nEditora: " + this.editora;
 	}
 	
 	public String toString() {

@@ -7,8 +7,8 @@ public class Jornal extends Produto {
 	private String titulo;
 	private List<Reportagem> reportagens = new ArrayList<>();
 	
-	public Jornal(String dataPub, Float precoVenda, String titulo, List<Reportagem> reportagens) {
-		super(dataPub, precoVenda);
+	public Jornal(String dataPub, Double precoVenda, String titulo, List<Reportagem> reportagens, Integer quantidade) {
+		super(dataPub, precoVenda, quantidade);
 		this.titulo = titulo;
 		this.reportagens = reportagens;
 	}
@@ -49,13 +49,13 @@ public class Jornal extends Produto {
 	
 	public String toStringResumido() {
 		return "Código do produto: " + this.getCodigo()
-				+ "Jornal"
-				+ "Título: " + this.titulo;
+				+ "\nJornal"
+				+ "\nTítulo: " + this.titulo;
 	}
 	
 	public String toString() {
 		return "Jornal"
-				+ "Código do item: " + this.getCodigo()
+				+ "\nCódigo do item: " + this.getCodigo()
 				+ "\nTítulo: " + this.titulo
 				+ "\nReportagens: " + this.retornaReportagens()
 				+ super.toString();

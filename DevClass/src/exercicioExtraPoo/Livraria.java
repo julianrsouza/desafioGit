@@ -16,44 +16,59 @@ public class Livraria {
 	public void editaProduto(Integer codProduto, Produto produtoAlteracao) {
 		for (int i = 0; i < produtos.size(); i++) {
 			if (produtos.get(i).getCodigo() == codProduto) {
+				produtoAlteracao.setCodigo(codProduto);
 				produtos.set(i, produtoAlteracao);
 			}
 		}
 	}
 	
+	public void listaProdutoPorId(Integer codProduto) {
+		for (int i = 0; i < produtos.size(); i++) {
+			if (produtos.get(i).getCodigo() == codProduto) {
+				System.out.println(produtos.get(i).toString());
+			}
+		}	
+	}
+	
 	public void listaProdutosResumidos() {
 		this.produtos.forEach(produto -> {
 			if(produto instanceof Livro) {
-				((Livro)produto).toStringResumido();
+				System.out.println(((Livro)produto).toStringResumido());
 			}
 			else if(produto instanceof Revista) {
-				((Revista)produto).toStringResumido();
+				System.out.println(((Revista)produto).toStringResumido());
 			} else {
-				((Jornal)produto).toStringResumido();
+				System.out.println(((Jornal)produto).toStringResumido());
 			}
+			System.out.println();
 		});
 	}
 	
 	public void listaProdutos() {
 		this.produtos.forEach(produto ->{
-			produto.toString();
+			System.out.println(produto.toString());
+			System.out.println();
 		});
 	}
 	
-	public void vendaProduto(Integer codProduto, ModalidadeVendaEnum modalidadeVenda) {
+	public void vendaProduto(Integer codProduto, Pessoa comprador, ModalidadeVendaEnum modalidadeVenda) {
 		for (int i = 0; i < this.produtos.size(); i++) {
 			if(produtos.get(i).getCodigo() == codProduto) {
-				Float precoProduto;
+				Double precoProduto = 0.0;
 				switch (modalidadeVenda) {
 					case Estudante:
-						precoProduto = produtos.get(i).getPrecoVenda()*0.5f;
-						produtos.remove(i);
+						precoProduto = produtos.get(i).getPrecoVenda()*0.5;
 						break;
 					case Demais:
 						precoProduto = produtos.get(i).getPrecoVenda();
-						produtos.remove(i);
 						break;
 				}
+				if(comprador.getSaldo() < precoProduto) {
+					System.out.println("Saldo insuficiente para a compra.");
+					break;
+				}
+				comprador.setSaldo(comprador.getSaldo() - precoProduto);
+				produtos.get(i).setQuantidade(produtos.get(i).getQuantidade() - 1);
 			}
 		}
 	}

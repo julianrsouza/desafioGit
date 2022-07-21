@@ -8,8 +8,8 @@ public class Livro extends Produto {
 	private List<String> autores = new ArrayList<>();
 	private String editora;
 
-	public Livro(String titulo, List<String> autores, String editora, String dataPub, Float precoVenda) {
-		super( dataPub, precoVenda);
+	public Livro(String titulo, List<String> autores, String editora, String dataPub, Double precoVenda, Integer quantidade) {
+		super( dataPub, precoVenda, quantidade);
 		this.titulo = titulo;
 		this.autores = autores;
 		this.editora = editora;
@@ -62,8 +62,8 @@ public class Livro extends Produto {
 	
 	public String toStringResumido() {
 		return "Código do produto: " + this.getCodigo()
-				+ "Livro"
-				+ "Título: " + this.titulo;
+				+ "\nLivro"
+				+ "\nTítulo: " + this.titulo;
 	}
 	
 	public String toString() {

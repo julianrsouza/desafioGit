@@ -3,24 +3,34 @@ package exercicioExtraPoo;
 public class Produto {
 	private Integer codigo;
 	private String dataPub;
-	private Float precoVenda;
+	private Double precoVenda;
+	private Integer quantidade;
 	
 	
-	public Produto(String dataPub, Float precoVenda) {
+	public Produto(String dataPub, Double precoVenda, Integer quantidade) {
 		this.dataPub = dataPub;
 		this.precoVenda = precoVenda;
+		this.quantidade = quantidade;
 	}
 	
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	public String getDataPub() {
 		return dataPub;
 	}
 	public void setDataPub(String dataPub) {
 		this.dataPub = dataPub;
 	}
-	public Float getPrecoVenda() {
+	public Double getPrecoVenda() {
 		return precoVenda;
 	}
-	public void setPrecoVenda(Float precoVenda) {
+	public void setPrecoVenda(Double precoVenda) {
 		this.precoVenda = precoVenda;
 	}
 	
@@ -33,7 +43,8 @@ public class Produto {
 	
 	public String toString() {
 		return "\nData da publicação: " + this.dataPub 
-				+ "\nPreço de venda: R$" + this.precoVenda;
+				+ "\nPreço de venda: R$" + this.precoVenda
+				+ "\nQuantidade: " + this.quantidade;
 	}
 	
 }
