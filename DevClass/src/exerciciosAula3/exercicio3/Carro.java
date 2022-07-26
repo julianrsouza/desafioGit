@@ -9,6 +9,7 @@ public class Carro extends Veiculo {
 
 	public String toString() {
 		return "Categoria: Carro"
-				+ super.toString();
+				+ "\n" + super.toString();
 	}
+	
 }

@@ -19,7 +19,7 @@ public class Caminhao extends Veiculo {
 	
 	public String toString() {
 		return "Categoria: Caminhão"
-				+ super.toString()
-				+ "Tipo de carroceria: " + this.tipoCarroceria;
+				+ "\n" + super.toString()
+				+ "\nTipo de carroceria: " + this.tipoCarroceria;
 	}
 }

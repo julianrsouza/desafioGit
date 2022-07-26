@@ -19,8 +19,8 @@ public class Moto extends Veiculo {
 	
 	public String toString() {
 		return "Categoria: Moto" 
-				+ super.toString()
-				+ "Cilindradas: " + this.cilindradas;
+				+ "\n" + super.toString()
+				+ "\nCilindradas: " + this.cilindradas;
 				
 	}
 }

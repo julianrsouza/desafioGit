@@ -20,29 +20,43 @@ public class Concessionaria {
 				.findFirst().ifPresentOrElse(veiculo -> veiculo.setPreco(novoPreco), () -> System.out.println("Id não encontrado"));
 	}
 	
+	public void mostraVeiculosPorId(Integer idVeiculo) {
+		veiculos.stream().filter(veiculo -> veiculo.getId() == idVeiculo)
+				.forEach(veiculo -> System.out.println(veiculo.toString()));
+		}
+	
 	public void mostraCarrosPorTipo(String tipoVeiculo) {
 		switch (tipoVeiculo.toUpperCase()) {
 			case "NOVOS":
-				obtemListaCarrosNovos().forEach(carro -> carro.toString());
+				obtemListaCarrosNovos().forEach(carro -> {
+					System.out.println(carro.toString());
+					System.out.println();
+				});
 				break;
 			case "SEMINOVOS":
-				obtemListaCarrosSeminovos().forEach(carro -> carro.toString());
+				obtemListaCarrosSeminovos().forEach(carro -> {
+					System.out.println(carro.toString());
+					System.out.println();
+				});
 				break;
 			case "AMBOS":
-				obtemListaCarros().forEach(carro -> carro.toString());
+				obtemListaCarros().forEach(carro -> {
+					System.out.println(carro.toString());
+					System.out.println();
+				});
 				break;
 		}
 	}
 	
-	public List<Veiculo> obtemListaCarrosNovos() {
+	private List<Veiculo> obtemListaCarrosNovos() {
 		return this.obtemListaCarros().stream()
-				.filter(carro -> carro.getTipoVeiculo() == TipoVeiculoEnum.NOVO)
+				.filter(carro -> carro.getTipoVeiculo().equals(TipoVeiculoEnum.NOVO))
 				.collect(Collectors.toList());
 	}
 	
-	public List<Veiculo> obtemListaCarrosSeminovos() {
+	private List<Veiculo> obtemListaCarrosSeminovos() {
 		return this.obtemListaCarros().stream()
-				.filter(carro -> carro.getTipoVeiculo() == TipoVeiculoEnum.SEMINOVO)
+				.filter(carro -> carro.getTipoVeiculo().equals(TipoVeiculoEnum.SEMINOVO))
 				.collect(Collectors.toList());
 	}
 	
@@ -52,10 +66,9 @@ public class Concessionaria {
 	}
 	
 	public void mostraMotosPorCilindrada(Integer cilindrada){
-		List<Veiculo> resultado = new ArrayList<>();
 		this.obtemListaMotos().forEach(moto -> {
-			var motoAtual = (Moto)moto;
-			if(motoAtual.getCilindradas() == cilindrada)
+			Moto motoAtual = (Moto)moto;
+			if(motoAtual.getCilindradas().equals(cilindrada))
 				System.out.println(motoAtual.toString());;
 		});
 	}
@@ -65,21 +78,21 @@ public class Concessionaria {
 				.collect(Collectors.toList()).forEach(moto -> moto.toString());
 	}
 	
-	public List<Veiculo> obtemListaMotos() {
+	private List<Veiculo> obtemListaMotos() {
 		return veiculos.stream().filter(veiculo -> veiculo instanceof Moto)
 				.collect(Collectors.toList());
 	}
 	
-	public List<Veiculo> obtemListaCaminhoes(){
+	private List<Veiculo> obtemListaCaminhoes(){
 		return veiculos.stream().filter(veiculo -> veiculo instanceof Caminhao)
 				.collect(Collectors.toList());
 	}
 	
-	public void obtemListaCaminhoesPorTipoCarroceria(TipoCarroceriaEnum tipoCarroceria){
+	public void mostraCaminhoesPorTipoCarroceria(TipoCarroceriaEnum tipoCarroceria){
 		this.obtemListaCaminhoes().forEach(caminhao -> {
 			var caminhaoAtual = (Caminhao)caminhao;
-			if(caminhaoAtual.getTipoCarroceria() == tipoCarroceria) {
-				caminhaoAtual.toString();
+			if(caminhaoAtual.getTipoCarroceria().equals(tipoCarroceria)) {
+				System.out.println(caminhaoAtual.toString());;
 			}
 		});
 	}

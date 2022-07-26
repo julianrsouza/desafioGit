@@ -95,7 +95,8 @@ public abstract class Veiculo {
 	}
 
 	public String toString() {
-		return "Quantidade de rodas: " + this.quantidadeRodas
+		return "Código do produto: " + this.id
+				+ "\nQuantidade de rodas: " + this.quantidadeRodas
 				+ "\nPeso: " + this.peso
 				+ "\nCor: " + this.cor
 				+ "\nMarca: " + this.marca
